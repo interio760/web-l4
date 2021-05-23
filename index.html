@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>l4</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+    }
+
+    body {
+        align-items: center;
+        justify-content: center;
+        background: url(imgs/space.jpg) no-repeat center center;
+        background-size: cover;
+    }
+
+    .system {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transform: rotateX(65deg) rotateY(-65deg);
+        animation: animateSystem 36s linear infinite;
+    }
+
+    @keyframes animateSystem {
+        0% {
+            transform: rotateX(65deg) rotateY(0deg);
+        }
+
+        100% {
+            transform: rotateX(65deg) rotateY(-360deg);
+        }
+    }
+
+    .earth,
+    .orbits,
+    .moon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-style: preserve-3d;
+        border-radius: 50%;
+    }
+
+    .moon {
+        border-radius: 0;
+    }
+
+    .earth,
+    .moon {
+        width: 2em;
+        height: 2em;
+        margin-top: -1em;
+        margin-left: -1em;
+    }
+
+    .earth {
+        font-size: 7em;
+        background: url(./imgs/earth.png) no-repeat center center;
+        background-size: cover;
+        transform: rotateX(-90deg);
+    }
+
+
+    .orbit {
+        width: 28em;
+        height: 28em;
+        margin-top: -14em;
+        margin-left: -14em;
+        animation: animateOrbit 12s linear infinite;
+    }
+
+    .satellite1 {
+        left: 100%;
+        animation: animateMoon 12s linear infinite;
+    }
+
+    #phobos {
+        background: url(./imgs/moon.png) no-repeat center center;
+        background-size: cover;
+    }
+
+    @keyframes animateOrbit {
+        0% {
+            transform: rotateZ(0deg);
+        }
+
+        100% {
+            transform: rotateZ(-360deg);
+        }
+    }
+
+    @keyframes animateMoon {
+        0% {
+            transform: rotateX(-90deg) rotateY(360deg) rotateZ(0deg);
+        }
+
+        100% {
+            transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+        }
+    }
+
+    @keyframes rotate-earth {
+        0% {
+            transform: rotateX(0deg);
+        }
+
+        100% {
+            transform: rotateZ(360deg);
+        }
+    }
+</style>
+
+<body>
+    <div class="system">
+        <div class="earth"></div>
+        <div class="orbits orbit">
+            <div class="moon satellite1" id="phobos"></div>
+        </div>
+    </div>
+</body>
+
+</html>
